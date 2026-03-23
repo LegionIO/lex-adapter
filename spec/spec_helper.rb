@@ -1,25 +1,44 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-SimpleCov.start
+require 'bundler/setup'
+require 'legion/logging'
+require 'legion/settings'
+require 'legion/cache/helper'
+require 'legion/crypt/helper'
+require 'legion/data/helper'
+require 'legion/json/helper'
+require 'legion/transport/helper'
 
 module Legion
-  module Logging
-    def self.debug(_msg = nil); end
-    def self.info(_msg = nil); end
-    def self.warn(_msg = nil); end
-    def self.error(_msg = nil); end
+  module Extensions
+    module Helpers
+      module Lex
+        include Legion::Logging::Helper
+        include Legion::Settings::Helper
+        include Legion::Cache::Helper
+        include Legion::Crypt::Helper
+        include Legion::Data::Helper
+        include Legion::JSON::Helper
+        include Legion::Transport::Helper
+      end
+    end
+
+    module Actors
+      class Every
+        include Helpers::Lex
+      end
+
+      class Once
+        include Helpers::Lex
+      end
+    end
   end
 end
 
 require 'legion/extensions/adapter'
 
 RSpec.configure do |config|
-  config.expect_with :rspec do |expectations|
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-  end
-  config.mock_with :rspec do |mocks|
-    mocks.verify_partial_doubles = true
-  end
+  config.example_status_persistence_file_path = '.rspec_status'
   config.disable_monkey_patching!
+  config.expect_with(:rspec) { |c| c.syntax = :expect }
 end

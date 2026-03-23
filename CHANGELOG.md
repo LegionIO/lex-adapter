@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1] - 2026-03-22
+
+### Changed
+- Add 7 runtime sub-gem dependencies to gemspec (legion-cache, legion-crypt, legion-data, legion-json, legion-logging, legion-settings, legion-transport)
+- Update spec_helper to use real sub-gem helpers and Helpers::Lex stub instead of inline Legion::Logging mock
+- Exclude gemspec from Metrics/BlockLength rubocop cop
+
 ## [0.1.0] - 2026-03-20
 
 ### Added
