@@ -11,7 +11,7 @@ External agent adapter abstraction for LegionIO. Provides a standardized interfa
 ## Gem Info
 
 - **Gem name**: `lex-adapter`
-- **Version**: `0.1.0`
+- **Version**: `0.1.1`
 - **Module**: `Legion::Extensions::Adapter`
 - **Ruby**: `>= 3.4`
 - **License**: MIT
