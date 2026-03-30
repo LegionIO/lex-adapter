@@ -45,11 +45,11 @@ module Legion
             { available: !@url.nil?, url: @url }
           end
 
-          def cancel(handle:)
+          def cancel(_handle:)
             { success: false, reason: :not_supported }
           end
 
-          def output(handle:)
+          def output(_handle:)
             { stdout: nil, stderr: nil, exit_code: nil }
           end
         end
