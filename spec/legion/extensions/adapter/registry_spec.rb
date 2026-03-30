@@ -7,10 +7,10 @@ RSpec.describe Legion::Extensions::Adapter::Registry do
 
   let(:test_adapter_class) do
     Class.new(Legion::Extensions::Adapter::Base) do
-      def invoke(task:, **) = { success: true }
+      def invoke(_task:, **) = { success: true }
       def status = { available: true, version: '1.0' }
-      def cancel(handle:) = { success: true }
-      def output(handle:) = { stdout: '', stderr: '', exit_code: 0 }
+      def cancel(_handle:) = { success: true }
+      def output(_handle:) = { stdout: '', stderr: '', exit_code: 0 }
     end
   end
 

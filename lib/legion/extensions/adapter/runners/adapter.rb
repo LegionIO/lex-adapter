@@ -5,6 +5,8 @@ module Legion
     module Adapter
       module Runners
         module Adapter
+          extend self # rubocop:disable Style/ModuleFunction
+
           def invoke_adapter(adapter_name:, task:, timeout: 30, **)
             klass = Registry.find(adapter_name)
             return { success: false, reason: :adapter_not_found } unless klass

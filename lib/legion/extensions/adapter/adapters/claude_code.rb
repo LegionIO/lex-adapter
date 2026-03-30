@@ -28,7 +28,7 @@ module Legion
             @handles[handle] = { stdout: stdout, stderr: stderr, exit_code: status.exitstatus }
 
             { success: status.success?, output: stdout, duration: duration, handle: handle }
-          rescue Timeout::Error
+          rescue Timeout::Error => _e
             { success: false, output: nil, duration: timeout.to_f, handle: handle, reason: :timeout }
           rescue StandardError => e
             { success: false, output: nil, duration: 0.0, handle: handle, reason: :error, message: e.message }
